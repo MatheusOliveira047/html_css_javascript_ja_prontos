@@ -5,9 +5,10 @@ formulario.onsubmit = function(evento){
     let inputNome = document.forms['formCadastro']['nome']
     let inputEmail = document.forms['formCadastro']['email']
     let inputCidade = document.forms['formCadastro']['cidade']
-
+    let temErro = false
 
     if(!inputNome.value){
+      temErro = true
       inputNome.classList.add('inputError')
       let span =inputNome.nextSibling.nextSibling
       span.innerText = 'Digite o nome corremtamente'
@@ -19,6 +20,8 @@ formulario.onsubmit = function(evento){
 
 
     if(!inputEmail.value){
+      temErro = true
+
       inputEmail.classList.add('inputError')
       let span =inputEmail.nextSibling.nextSibling
       span.innerText = 'Digite o Email corremtamente'  
@@ -29,8 +32,10 @@ formulario.onsubmit = function(evento){
     }
 
 
-    
+
     if(inputCidade.value === ''){
+      temErro = true
+
       inputCidade.classList.add('inputError')
       let span =inputCidade.nextSibling.nextSibling
       span.innerText = 'Selecione alguma cidade '
@@ -41,6 +46,8 @@ formulario.onsubmit = function(evento){
       span.innerText = ''
     }
 
-
+    if(temErro === false){
+      formulario.submit()
+    }
 
 }
